@@ -2,8 +2,6 @@
 
 ## If you found this repo useful, give it a STAR 🌠
 
-You can watch the video version of this repo on my youtube channel -> https://www.youtube.com/@AbhishekVeeramalla
-
 
 ## What is a container ?
 
