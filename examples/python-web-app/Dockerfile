@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:latest
 
 WORKDIR /app
 
