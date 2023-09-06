@@ -11,7 +11,7 @@ RUN apt-get update && \
     cd devops
 
 ENTRYPOINT ["python3"]
-CMD ["manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["manage.py", "runserver", "0.0.0.0:8080"]
 
 
 
