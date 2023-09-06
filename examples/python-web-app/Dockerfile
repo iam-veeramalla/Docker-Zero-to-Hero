@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 WORKDIR /app
 
-COPY examples/python-web-app/requirements.txt /app
+COPY ./examples/python-web-app/requirements.txt /app
 COPY devops /app
 
 RUN apt-get update && \
