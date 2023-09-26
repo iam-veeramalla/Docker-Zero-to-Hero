@@ -56,7 +56,7 @@ These containers are completely isolated with their private networks and cannot 
 ![image](https://user-images.githubusercontent.com/43399466/217748680-8beefd0a-8181-4752-a098-a905ebed5d2a.png)
 
 
-However, you can at any point of time, attach the first container to my_bridge network and enable communication
+However, you can at any point of time, attach the first container to the my_bridge network and enable communication
 
 ```
 docker network connect my_bridge web
