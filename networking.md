@@ -42,7 +42,7 @@ xxxxxxxxxxxx        none                null
 xxxxxxxxxxxx        host                host
 ```
 
-This new network can be attached to the containers, when you run these containers.
+This new network can be attached to the containers when you run these containers.
 
 ```
 docker run -d --net=my_bridge --name db training/postgres
@@ -51,12 +51,12 @@ docker run -d --net=my_bridge --name db training/postgres
 This way, you can run multiple containers on a single host platform where one container is attached to the default network and 
 the other is attached to the my_bridge network.
 
-These containers are completely isolated with their private networks and cannot talk to each other.
+These containers are completely isolated from their private networks and cannot talk to each other.
 
 ![image](https://user-images.githubusercontent.com/43399466/217748680-8beefd0a-8181-4752-a098-a905ebed5d2a.png)
 
 
-However, you can at any point of time, attach the first container to my_bridge network and enable communication
+However, you can at any point in time, attach the first container to the my_bridge network and enable communication
 
 ```
 docker network connect my_bridge web
@@ -69,7 +69,7 @@ docker network connect my_bridge web
 
 This mode allows containers to share the host system's network stack, providing direct access to the host system's network.
 
-To attach a host network to a Docker container, you can use the --network="host" option when running a docker run command. When you use this option, the container has access to the host's network stack, and shares the host's network namespace. This means that the container will use the same IP address and network configuration as the host.
+To attach a host network to a Docker container, you can use the --network="host" option when running a docker run command. When you use this option, the container has access to the host's network stack and shares the host's network namespace. This means that the container will use the same IP address and network configuration as the host.
 
 Here's an example of how to run a Docker container with the host network:
 
