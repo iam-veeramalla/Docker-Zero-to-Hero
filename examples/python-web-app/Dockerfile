@@ -1,9 +1,9 @@
 FROM ubuntu
 
-WORKDIR /app
+WORKDIR /workflow
 
-COPY requirements.txt /app
-COPY devops /app
+COPY requirements.txt /workflow
+COPY devops /workflow
 
 RUN apt-get update && \
     apt-get install -y python3 python3-pip && \
@@ -11,7 +11,7 @@ RUN apt-get update && \
     cd devops
 
 ENTRYPOINT ["python3"]
-CMD ["manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["manage.py", "runserver", "0.0.0.0:80"]
 
 
 
