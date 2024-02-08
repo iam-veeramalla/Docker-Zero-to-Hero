@@ -1,7 +1,5 @@
 # first-docker-file
 
-### Docker
-
 - Step 1: Clone the this repository to the system.
 ```
 git clone https://github.com/iam-veeramalla/Docker-Zero-to-Hero.git
@@ -12,7 +10,7 @@ cd Docker-Zero-to-Hero/examples/first-docker-file/
 ```
 - Step 3: First we have to biuld the image for this application. Follow the commands.
 ```
-> docker build -t aashish1947/first-docker-file .
+docker build -t aashish1947/first-docker-file .
 ```
 ### Output
 ```
