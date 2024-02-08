@@ -1,7 +1,5 @@
 # python-web-app
 
-### Docker 
-
 - Step 1: Clone the this repository to the system.
 ```
 git clone https://github.com/iam-veeramalla/Docker-Zero-to-Hero.git
