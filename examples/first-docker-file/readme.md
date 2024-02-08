@@ -40,7 +40,7 @@ What's Next?
 ```
 - Step 4: To access the application we have to use docker run.
 ```
-docker run -it aashish1947/first-docker-file
+docker run -it DockerUserName/first-docker-file
 ```
 ### Output
 ```
