@@ -63,3 +63,18 @@ Quit the server with CONTROL-C.
 ![image](https://github.com/aashishsec/Docker-Zero-to-Hero/assets/65489287/c830a3b5-321e-4365-af87-08f507b2f48e)
 ![image](https://github.com/aashishsec/Docker-Zero-to-Hero/assets/65489287/652f64cb-d245-4be2-928c-bae7477b78cc)
 
+- Step 5: If u want to push this docker to your's Docker repository. Follow this commmands.
+```
+ docker push DockerUserName/django-web-app
+```
+### Output
+```
+Using default tag: latest
+The push refers to repository [docker.io/aashish1947/django-web-app]
+40422ceccb2d: Pushed
+6abe287a18f5: Pushed
+e4f754fb9420: Pushed
+682f7ea1d6fa: Mounted from aashish1947/my-first-docker-app
+1a102d1cac2b: Mounted from aashish1947/my-first-docker-app
+latest: digest: sha256:039253dce731c2243a7112b3c497d40db9c25d71053e4ec15479132b43e4641f size: 1363
+```
