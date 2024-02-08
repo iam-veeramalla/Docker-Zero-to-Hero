@@ -40,7 +40,7 @@ View build details: docker-desktop://dashboard/build/default/default/g3wtxn3mjg6
 What's Next?
   View a summary of image vulnerabilities and recommendations → docker scout quickview
 ```
-- Step 4: To run the application we have to use docker run.
+- Step 4: To access the application we have to use docker run.
 ```
  docker run -p 8080:8080 -it aashish1947/django-web-app
 ```
