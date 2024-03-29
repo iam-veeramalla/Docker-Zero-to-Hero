@@ -42,3 +42,63 @@ This Dockerfile describes the steps to create a Docker image for a Django applic
 
 Please note that this Dockerfile assumes the presence of a Django project in the `devops` directory and a `requirements.txt` file listing the required Python packages. Adjustments may be needed based on the actual project structure and requirements.
 
+### what is the diffrence between entrypoint and cmd in docker file with example
+
+
+
+ CMD: CMD instruction is used mentioning the startup scripts and commands for starting the services.
+        This instruction will be executed at runtime of the docker container.
+        When more then one CMD instruction is used inside Dockerfile, then only one CMD instruction will be used by Dockerfile , rest will be ignored!!
+
+        
+    
+    CMD ["/opt/tomcat/bin/startup.sh"]
+    CMD ["/opt/tomcat/bin/catalina.sh","force-start"]
+    CMD ["/opt/tomcat/bin/catalina.sh","run"]
+    
+    
+ENTRYPOINT: ENTRYPOINT instruction is used mentioning the startup scripts and commands for starting the services.
+        - This instruction will be executed at runtime of the docker container.
+        - When ENTRYPOINT is used we can mention more than one CMD instruction inside Dockerfile.
+        - We can pass arguments as CMD to ENTRYPOINT instruction.
+   
+    
+    ENTRYPOINT ["/opt/tomcat/bin/catalina.sh"]
+    CMD ["run"]
+    CMD ["force-start"]
+    
+    
+- The settings.py si for entire information of what the ip's that you can whitelist,what is the database that are you going to connect,if you have any secure information these things was there in settings.py file,it will set the entire configuration for your django Project.
+- The urls.py is responisble for serving the content.
+
+  # Application Process
+
+  - Install Python
+```  
+ yum install Python
+ 
+sudo yum install python3-pip
+
+sudo pip3 install Django
+
+python3 -m django --version
+```
+### Creating a project
+
+- If this is your first time using Django, you’ll have to take care of some initial setup. Namely, you’ll need to auto-generate some code that establishes a Django project – a collection of settings for an instance of Django, including database configuration, Django-specific options and application-specific settings.
+
+From the command line, cd into a directory where you’d like to store your code, then run the following command:
+
+
+``` django-admin startproject devops (Repo name) ```
+
+- This will create a mysite directory in your current directory. If it didn’t work, see Problems running django-admin.
+
+ ### The development server
+Let’s verify your Django project works. Change into the outer mysite directory, if you haven’t already, and run the following commands:
+
+
+``` python manage.py runserver ```
+``` python manage.py startapp polls ```
+
+  
