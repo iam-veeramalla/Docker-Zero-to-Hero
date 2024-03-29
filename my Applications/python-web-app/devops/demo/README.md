@@ -99,6 +99,7 @@ Let’s verify your Django project works. Change into the outer mysite directory
 
 
 ``` python manage.py runserver ```
+
 ``` python manage.py startapp polls ```
 
   
