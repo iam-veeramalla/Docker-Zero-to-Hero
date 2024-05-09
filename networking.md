@@ -15,7 +15,14 @@ xxxxxxxxxxxx        none                null
 xxxxxxxxxxxx        host                host
 xxxxxxxxxxxx        bridge              bridge
 ```
+## Types of Network Drivers
 
+- <h2>bridge</h2>: If you build a container without specifying the kind of driver, the container will only be created in the bridge network, which is the default network. 
+- <h2>host</h2>: Containers will not have any IP address they will be directly created in the system network which will remove isolation between the docker host and containers. 
+- <h2>none</h2>: IP addresses won’t be assigned to containers. These containments are not accessible to us from the outside or from any other container.
+- <h2>overlay</h2>: overlay network will enable the connection between multiple Docker demons and make different Docker swarm services communicate with each other.
+- <h2>ipvlan</h2>: Users have complete control over both IPv4 and IPv6 addressing by using the IPvlan driver.
+- <h2>macvlan</h2>: macvlan driver makes it possible to assign MAC addresses to a container. 
 
 ### Bridge Networking
 
