@@ -1,0 +1,23 @@
+name: build an image
+
+on:
+ pull_request:
+   branches:
+    - vikas_development
+jobs:
+  build:
+     runs_on: ubuntu_latest
+
+      steps:
+      -  name: checkout code
+         uses: actions/checkout@v2
+
+      - name: setup a docker buildx
+        uses: docker/setup a docker Buildx-action@v2
+
+      - name: Build a docker image
+        run: |
+              docker build -t my-app-image
+
+      
+ 
