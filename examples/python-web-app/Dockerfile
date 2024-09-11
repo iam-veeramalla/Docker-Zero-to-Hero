@@ -1,18 +1,22 @@
-FROM ubuntu
+FROM ubuntu as builder
 
 WORKDIR /app
 
 COPY requirements.txt /app
 COPY devops /app
 
+ENV PIP_BREAK_SYSTEM_PACKAGES 1
+
 RUN apt-get update && \
     apt-get install -y python3 python3-pip && \
-    pip install -r requirements.txt && \
-    cd devops
+    pip install -r requirements.txt
+
+FROM python:3-slim
+
+WORKDIR /app
+
+COPY --from=builder /app/* /app
+RUN cd devops
 
 ENTRYPOINT ["python3"]
 CMD ["manage.py", "runserver", "0.0.0.0:8000"]
-
-
-
-
