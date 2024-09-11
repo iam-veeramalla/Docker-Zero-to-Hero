@@ -17,7 +17,7 @@ A container is a bundle of Application, Application libraries required to run yo
 
 
 
-## Containers vs Virtual Machine 
+## Containers vs Virtual Machine
 
 Containers and virtual machines are both technologies used to isolate applications and their dependencies, but they have some key differences:
 
