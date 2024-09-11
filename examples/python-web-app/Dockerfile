@@ -5,7 +5,6 @@ WORKDIR /app
 COPY requirements.txt /app
 COPY devops /app
 
-## refer this link for why we are setting environment variable https://veronneau.org/python-311-pip-and-breaking-system-packages.html
 ENV PIP_BREAK_SYSTEM_PACKAGES 1
 
 RUN apt-get update && \
