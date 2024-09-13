@@ -1,30 +1,21 @@
-FROM ubuntu
+FROM ubuntu:20.04
 
-# Set the working directory in the container
+# Set working directory
 WORKDIR /app
 
-# Copy the requirements file and devops directory into the container
+# Copy files
 COPY requirements.txt /app
-COPY devops /app
+COPY devops /app/devops
 
-# Install Python and other necessary tools
+# Install dependencies
 RUN apt-get update && \
-    apt-get install -y python3 python3-pip python3-venv && \
-    python3 -m venv /app/venv && \
-    /app/venv/bin/pip install --upgrade pip && \
-    /app/venv/bin/pip install -r requirements.txt
+    apt-get install -y python3 python3-pip && \
+    pip install --no-cache-dir -r requirements.txt && \
+    rm -rf /var/lib/apt/lists/*
 
-# Set the PATH to ensure the virtual environment is used
-ENV PATH="/app/venv/bin:$PATH"
+# Set working directory to devops
+WORKDIR /app/devops
 
-# Expose the necessary port
-EXPOSE 8000
-
-# Run the Django development server
+# Set entry point for the container
 ENTRYPOINT ["python3"]
 CMD ["manage.py", "runserver", "0.0.0.0:8000"]
-
-
-
-
-
