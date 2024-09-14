@@ -1,16 +1,22 @@
-FROM ubuntu:latest
+# Use the official python image from docker hub
+FROM python:3.9-slim
 
-# Set the working directory in the image
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy the files from the host file system to the image file system
-COPY . /app
+# Copy the requirements file into the container
 
-# Install the necessary packages
-RUN apt-get update && apt-get install -y python3 python3-pip
+COPY requirements.txt .
 
-# Set environment variables
-ENV NAME World
+# Install the dependencies
+RUN pip install -r requirements.txt
 
-# Run a command to start the application
-CMD ["python3", "app.py"]
+# Copy the rest of the application into the container
+COPY . .
+
+# EXpose the port the application
+EXPOSE 5000
+
+# Define the command to run the application
+
+CMD [ "python", "app.py" ]

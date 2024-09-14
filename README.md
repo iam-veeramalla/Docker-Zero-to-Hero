@@ -2,7 +2,7 @@
 
 ## If you found this repo useful, give it a STAR 🌠
 
-You can watch the video version of this repo on my youtube playlist. -> https://www.youtube.com/watch?v=7JZP345yVjw&list=PLdpzxOOAlwvLjb0vTD9BXLOwwLD_GWCmC
+
 
 
 ## What is a container ?
@@ -17,7 +17,7 @@ A container is a bundle of Application, Application libraries required to run yo
 
 
 
-## Containers vs Virtual Machine 
+## Containers vs Virtual Machine
 
 Containers and virtual machines are both technologies used to isolate applications and their dependencies, but they have some key differences:
 
@@ -332,7 +332,7 @@ hello-world                        latest    feb5d9fea6a5   16 months ago    13.
 ### Run your First Docker Container
 
 ```
-docker run -it abhishekf5/my-first-docker-image
+docker run -it soma1999/my-first-docker-image
 ```
 
 Output
@@ -344,7 +344,7 @@ Hello World
 ### Push the Image to DockerHub and share it with the world
 
 ```
-docker push abhishekf5/my-first-docker-image
+docker push soma1999/my-first-docker-image
 ```
 
 Output
@@ -360,3 +360,108 @@ latest: digest: sha256:6e49841ad9e720a7baedcd41f9b666fcd7b583151d0763fe78101bb82
 ```
 
 ### You must be feeling like a champ already 
+
+# -----------------------------------------------------------------------------------------------------------------------------------------
+# Important Docker Interview Questions
+
+## Docker Interview
+
+Docker is a crucial topic for DevOps Engineer interviews, especially for freshers. Here are some essential questions to help you prepare and ace your Docker interviews:
+
+## Questions
+
+- **What is the difference between an Image, Container, and Engine?**
+  - **Image**: A lightweight, standalone, and executable software package that includes everything needed to run a piece of software, including the code, runtime, libraries, and environment variables.
+  - **Container**: A running instance of a Docker image. It is a lightweight, standalone environment that runs the application and its dependencies.
+  - **Engine**: The core component of Docker that allows you to build and run containers. It manages the containers, images, networks, and storage.
+
+- **What is the difference between the Docker command COPY vs ADD?**
+  - **COPY**: Used to copy files and directories from the host file system to the Docker image. It is a straightforward command that does not unpack compressed files.
+  - **ADD**: Similar to COPY, but it can also unpack compressed files (like .tar.gz) and can pull files from remote URLs. However, it is generally recommended to use COPY for local files to avoid unintended behaviors.
+
+- **What is the difference between the Docker command CMD vs RUN?**
+  - **CMD**: Specifies the default command to run when a container is started. It can be overridden by command line arguments.
+  - **RUN**: Used to execute commands during the image build process. It creates a new layer in the image for each command executed.
+
+- **How will you reduce the size of a Docker image?**
+  - Use smaller base images.
+  - Combine multiple RUN commands into a single command to minimize layers.
+  - Remove unnecessary files and dependencies in the image.
+  - Use `.dockerignore` to exclude files not needed in the image.
+
+- **Why and when should you use Docker?**
+  - Use Docker to simplify the development, deployment, and scaling of applications. It helps create consistent environments across different stages (development, testing, production).
+
+- **Explain the Docker components and how they interact with each other.**
+  - **Docker Daemon**: Runs on the host and manages Docker containers.
+  - **Docker Client**: The command-line interface for interacting with the Docker daemon.
+  - **Docker Hub**: A public registry for sharing Docker images.
+  - **Docker Compose**: A tool for defining and running multi-container Docker applications.
+
+- **Explain the terminology: Docker Compose, Dockerfile, Docker Image, Docker Container.**
+  - **Docker Compose**: A tool for defining and managing multi-container Docker applications using a `docker-compose.yml` file.
+  - **Dockerfile**: A text file that contains instructions on how to build a Docker image.
+  - **Docker Image**: A snapshot of a filesystem that contains everything needed to run an application.
+  - **Docker Container**: A running instance of a Docker image, isolated from other containers.
+
+- **In what real scenarios have you used Docker?**
+  - Describe specific projects or use cases where Docker was instrumental in development, testing, or production environments.
+
+- **Docker vs Hypervisor?**
+  - Docker containers share the host OS kernel and are lightweight compared to hypervisors, which create separate virtual machines with their own OS.
+
+- **What are the advantages and disadvantages of using Docker?**
+  - **Advantages**: Consistency across environments, efficient resource utilization, fast deployment, and isolation.
+  - **Disadvantages**: Security concerns, complexity in managing containers, and potential for performance overhead.
+
+- **What is a Docker namespace?**
+  - Namespaces provide isolation between containers, allowing them to run independently with their own resources.
+
+- **What is a Docker registry?**
+  - A storage and distribution system for Docker images. Docker Hub is the default public registry.
+
+- **What is an entry point?**
+  - An entry point is a command that is always executed when a container starts, similar to CMD but more rigid.
+
+- **How to implement CI/CD in Docker?**
+  - Use Docker images in your CI/CD pipeline to create consistent environments for testing and deployment.
+
+- **Will data on the container be lost when the Docker container exits?**
+  - Yes, data stored in a container is ephemeral. Use volumes to persist data.
+
+- **What is a Docker swarm?**
+  - A clustering and orchestration tool for managing multiple Docker hosts as a single virtual host.
+
+- **What are the Docker commands for the following:**
+  - **Viewing running containers**: `docker ps`
+  - **Running a container under a specific name**: `docker run --name <container_name> <image_name>`
+  - **Exporting a Docker image**: `docker save -o <file_name>.tar <image_name>`
+  - **Importing an existing Docker image**: `docker load -i <file_name>.tar`
+  - **Deleting a container**: `docker rm <container_id>`
+  - **Removing all stopped containers, unused networks, build caches, and dangling images**: `docker system prune`
+
+- **What are the common Docker practices to reduce the size of Docker images?**
+  - Use multi-stage builds, keep layers minimal, and regularly clean up unused images and containers.
+
+- **How do you troubleshoot a Docker container that is not starting?**
+  - Check the container logs using `docker logs <container_id>` and inspect the container’s configuration with `docker inspect <container_id>`.
+
+- **Can you explain the Docker networking model?**
+  - Docker provides different network types: bridge, host, overlay, and none, to facilitate communication between containers.
+
+- **How do you manage persistent storage in Docker?**
+  - Use Docker volumes to store data outside of the container filesystem, allowing data to persist even if the container is removed.
+
+- **How do you secure a Docker container?**
+  - Implement the principle of least privilege, use trusted images, keep containers updated, and restrict network access.
+
+- **What is Docker overlay networking?**
+  - A method to connect multiple Docker daemons and their containers, allowing them to communicate as if they were on the same network.
+
+- **How do you handle environment variables in Docker?**
+  - Pass environment variables using the `-e` flag in `docker run` or define them in a `docker-compose.yml` file under the `environment` section.
+
+These questions will help you in your next DevOps interview. Write a blog and share it on LinkedIn to showcase your knowledge.
+
+
+

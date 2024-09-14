@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  web:
+    image: flask-app
+    build:
+      context: ./flask-app  # Directory where your Flask app Dockerfile is located
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@db:5432/exampledb
+    depends_on:
+      - db  # Ensure the db service is started before web
+
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      - POSTGRES_DB=exampledb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - pg_data:/var/lib/postgresql/data  # Persist data
+
+volumes:
+  pg_data:
