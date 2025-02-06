@@ -1,16 +1,33 @@
+# Use an official Ubuntu as a base image
 FROM ubuntu:latest
 
-# Set the working directory in the image
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the files from the host file system to the image file system
+# Install necessary dependencies (Python, pip, venv)
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip python3-venv
+
+# Create and activate a virtual environment
+RUN python3 -m venv /venv
+
+# Upgrade pip inside the virtual environment
+RUN /venv/bin/pip install --upgrade pip
+
+# Copy the requirements file into the container
+COPY requirements.txt .
+
+# Install the Python dependencies into the virtual environment
+RUN /venv/bin/pip install -r requirements.txt
+
+# Copy the rest of the application files
 COPY . /app
 
-# Install the necessary packages
-RUN apt-get update && apt-get install -y python3 python3-pip
-
-# Set environment variables
+# Set environment variable (optional)
 ENV NAME World
 
-# Run a command to start the application
+# Add virtual environment's binary folder to PATH
+ENV PATH="/venv/bin:$PATH"
+
+# Set the command to run your app (using the virtual environment's Python)
 CMD ["python3", "app.py"]
