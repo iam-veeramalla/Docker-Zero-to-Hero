@@ -89,3 +89,25 @@ This mode enables communication between containers across multiple Docker host m
 
 This mode allows a container to appear on the network as a physical host rather than as a container.
 
+
+### Docker Networking Commands
+
+### Basics
+
+- **List networks**: `docker network ls`
+- **Inspect a network**: `docker network inspect NETWORK_NAME`
+- **Create a network**: `docker network create NETWORK_NAME`
+- **Connect container to a network**: `docker network connect NETWORK_NAME CONTAINER_NAME`
+- **Disconnect container from a network**: `docker network disconnect NETWORK_NAME CONTAINER_NAME`
+- **Remove a network**: `docker network rm NETWORK_NAME`
+
+### Advanced
+
+- **Bridge network**: Default network that containers use if no network is specified. It allows containers to communicate with each other.
+  - `docker network create --driver bridge NETWORK_NAME`
+- **Host network**: Containers share the host's network stack. They have the same network interfaces as the host system.
+  - `docker run --network host IMAGE_NAME`
+- **Overlay network**: Used in swarm mode for inter-node communication.
+  - `docker network create --driver overlay NETWORK_NAME`
+
+

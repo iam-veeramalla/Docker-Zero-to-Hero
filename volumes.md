@@ -58,3 +58,43 @@ they can be managed and backed up separately from the host file system, and can 
 In a nutshell, Bind Directory on a host as a Mount are appropriate for simple use cases where you need to mount a directory from the host file system into
 a container, while volumes are better suited for more complex use cases where you need more control over the data being persisted
 in the container.
+
+Sure, here's a comprehensive guide to Docker networking, volumes, and mounts in Markdown format:
+
+## Docker Volumes Commands
+### Basics
+
+- **List volumes**: `docker volume ls`
+- **Inspect a volume**: `docker volume inspect VOLUME_NAME`
+- **Create a volume**: `docker volume create VOLUME_NAME`
+- **Remove a volume**: `docker volume rm VOLUME_NAME`
+
+### Advanced
+
+- **Bind mount**: Maps a host file or directory to a container file or directory.
+  - `docker run -v /host/path:/container/path IMAGE_NAME`
+- **Anonymous volume**: Automatically created by Docker and managed internally. Useful for temporary data.
+  - `docker run -v /container/path IMAGE_NAME`
+- **Named volume**: Allows you to manage volumes independently of containers.
+  - `docker run -v VOLUME_NAME:/container/path IMAGE_NAME`
+- **Remote volume**: Docker supports various volume drivers for remote storage systems like NFS, AWS EBS, etc.
+  - `docker volume create --driver DRIVER_NAME VOLUME_NAME`
+
+## Docker Mounts
+
+### Basics
+
+- **Bind mount**: Maps a host file or directory to a container file or directory.
+  - `docker run --mount type=bind,source=/host/path,target=/container/path IMAGE_NAME`
+- **Volume mount**: Uses a named or anonymous volume.
+  - `docker run --mount source=VOLUME_NAME,target=/container/path IMAGE_NAME`
+
+### Advanced
+
+- **TMPFS mount**: Mounts a temporary file system inside the container's memory.
+  - `docker run --mount type=tmpfs,destination=/container/path IMAGE_NAME`
+- **Named pipe mount**: Provides a way for processes to communicate with each other using named pipes.
+  - `docker run --mount type=pipe,source=PIPE_NAME,target=/container/path IMAGE_NAME`
+- **Secret mount**: Used to provide sensitive information securely to containers.
+  - `docker run --mount type=secret,source=SECRET_NAME,target=/container/path IMAGE_NAME`
+
