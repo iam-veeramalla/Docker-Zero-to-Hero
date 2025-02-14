@@ -284,6 +284,11 @@ You need to change the username accoringly in the below command
 docker build -t abhishekf5/my-first-docker-image:latest .
 ```
 
+## OR USE (with dot last to look for current directory)
+```
+docker build -t puneeth11/python-dockerimage .
+```
+
 #You're seeing this warning because you're using Docker's legacy builder, which is being deprecated. Docker now recommends using **BuildKit**, a more efficient and flexible build system.
 
 ### How to Fix:
