@@ -90,15 +90,15 @@ Multi-stage builds are ideal for:
 | **Build Stage**    | Ubuntu        | ~600MB  | Go compiler, source code, binary |
 | **Final Image**    | Scratch       | ~1.8MB  | Only the compiled binary (`/app`) |
 
-#NOTE
-####SCRACTCH Wont work for all application for example python require python run time during that time you can use python distroless images
+# NOTE
+####S CRACTCH Wont work for all application for example python require python run time during that time you can use python distroless images
 ### 🔥 **Where to Get Distroless Images?**  
 
 Distroless images are maintained by **Google** and are hosted on **Google Container Registry (GCR)** and **Artifact Registry (AR)**. You can pull them directly using Docker.  
 
 ---
 
-## 📌 ** Official Distroless Image Repository**  
+## 📌 **Official Distroless Image Repository**  
 ✅ **GitHub Repository:** [https://github.com/GoogleContainerTools/distroless](https://github.com/GoogleContainerTools/distroless)  
 ✅ **Docker Hub (Mirrored):** [https://hub.docker.com/r/gcr.io/distroless](https://hub.docker.com/r/gcr.io/distroless)  
 
