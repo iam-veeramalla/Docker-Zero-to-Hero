@@ -91,7 +91,7 @@ Multi-stage builds are ideal for:
 | **Final Image**    | Scratch       | ~1.8MB  | Only the compiled binary (`/app`) |
 
 # NOTE
-####S CRACTCH Wont work for all application for example python require python run time during that time you can use python distroless images
+#### SCRACTCH Wont work for all application for example python require python run time during that time you can use python distroless images
 ### 🔥 **Where to Get Distroless Images?**  
 
 Distroless images are maintained by **Google** and are hosted on **Google Container Registry (GCR)** and **Artifact Registry (AR)**. You can pull them directly using Docker.  
