@@ -85,6 +85,48 @@ docker run --network="host" <image_name> <command>
 - `--network="host"` → Uses the host's network stack instead of an isolated network.
 
 When using the host network, the container has access to the host's network resources and uses the same IP address and network configuration as the host. This reduces isolation and may pose security risks.
+This command runs a Docker container with the `--network="host"` option. Here's a breakdown of each part:
+
+### **Command Breakdown**
+1. **`docker run`**  
+   - This starts a new Docker container.
+
+2. **`--network="host"`**  
+   - This tells Docker to use the **host network mode**, meaning the container will share the same network namespace as the host machine.
+   - It allows the container to directly use the host’s networking stack instead of being assigned its own virtual network.
+   - This is useful when you need low-latency networking or direct access to host ports without exposing them explicitly.
+
+3. **`<image_name>`**  
+   - This is the name of the Docker image from which the container is created.
+
+4. **`<command>`**  
+   - This is the command that will be executed inside the container once it starts.
+
+---
+
+### **Implications of `--network="host"`**
+- The container **does not get its own IP address**; it uses the host's IP instead.
+- All network traffic from the container is treated as if it originated from the host.
+- Any ports opened by the container are **accessible directly on the host** without needing to be published via `-p`.
+- This mode is **Linux-only** (on Windows/macOS, the behavior is different due to Docker’s architecture).
+
+---
+
+### **Example Usage**
+#### Example 1: Running a web server with host networking
+```bash
+docker run --network="host" nginx
+```
+- Runs an Nginx web server.
+- The container will bind directly to the host’s ports (e.g., `80` and `443`), so you don't need to expose ports explicitly.
+
+#### Example 2: Running a containerized application that connects to a local database
+```bash
+docker run --network="host" my-app
+```
+- If `my-app` tries to connect to `localhost:5432` (for example, a PostgreSQL database), it will resolve to the **host’s** database instead of a separate container.
+
+Would you like more details on when to use this option? 🚀
 
 ## Overlay Networking
 
