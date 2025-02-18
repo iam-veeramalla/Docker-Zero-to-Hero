@@ -215,7 +215,7 @@ docker network rm secure-network
 
 ## Summary
 
-- **Detach mode -d runs containers in the background.
+- **Detach mode** -d runs containers in the background.
 - **Nginx** is a web server and reverse proxy.
 - **Basic commands** like `docker ps`, `docker images`, `docker stop`, and `docker rm` manage containers.
 - **Bridge networking** allows communication within the same bridge but isolates from external networks.
