@@ -284,6 +284,41 @@ You need to change the username accoringly in the below command
 docker build -t abhishekf5/my-first-docker-image:latest .
 ```
 
+## OR USE (with dot last to look for current directory)
+```
+docker build -t puneeth11/python-dockerimage .
+```
+
+#You're seeing this warning because you're using Docker's legacy builder, which is being deprecated. Docker now recommends using **BuildKit**, a more efficient and flexible build system.
+
+### How to Fix:
+To switch to **BuildKit**, follow these steps:
+
+1. **Enable BuildKit for all builds**  
+   Run the following command before building:
+   ```sh
+   export DOCKER_BUILDKIT=1
+   ```
+
+2. **Use Buildx for building**  
+   First, install Buildx if it's not already installed:
+   ```sh
+   docker buildx create --use
+   ```
+
+   Then, use `docker buildx build` instead of `docker build`:
+   ```sh
+   docker buildx build -t puneeth11/my-first-docker-image:latest .
+   ```
+
+3. **Install Buildx (if needed)**  
+   If you see errors, install Buildx manually:
+   ```sh
+   docker buildx install
+   ```
+
+Would you like a deeper explanation of BuildKit and Buildx? 🚀
+
 Output of the above command
 
 ```
