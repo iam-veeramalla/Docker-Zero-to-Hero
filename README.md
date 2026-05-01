@@ -27,13 +27,13 @@ Containers and virtual machines are both technologies used to isolate applicatio
 
     3. Security: VMs provide a higher level of security as each VM has its own operating system and can be isolated from the host and other VMs. Containers provide less isolation, as they share the host operating system.
 
-   4.  Management: Managing containers is typically easier than managing VMs, as containers are designed to be lightweight and fast-moving.
+    4.  Management: Managing containers is typically easier than managing VMs, as containers are designed to be lightweight and fast-moving.
 
 
 
 ## Why are containers light weight ?
 
-Containers are lightweight because they use a technology called containerization, which allows them to share the host operating system's kernel and libraries, while still providing isolation for the application and its dependencies. This results in a smaller footprint compared to traditional virtual machines, as the containers do not need to include a full operating system. Additionally, Docker containers are designed to be minimal, only including what is necessary for the application to run, further reducing their size.
+Containers are lightweight because they use a technology called containerization, which allows them to share the host operating system's kernel and libraries, while still providing isolation for the application and its dependencies (as there is a need for security,id both App A and B are usinf the kernel as whole, the hacker working on App A can get into App B) . This results in a smaller footprint compared to traditional virtual machines, as the containers do not need to include a full operating system. Additionally, Docker containers are designed to be minimal, only including what is necessary for the application to run, further reducing their size. [they don't have the complete OS, it's partial for reasons like as isolation has to be done for security reasons]
 
 Let's try to understand this with an example:
 
@@ -63,7 +63,7 @@ To provide a better picture of files and folders that containers base images hav
 
     /root: is the home directory of the root user.
 ```
-
+Above files can't be shared to other containers, if done may lead to security issues AND that is the reason these are seperately provided to each and every container instead of it being in host where they all get it from
 
 
 ### Files and Folders that containers use from host operating system
@@ -141,12 +141,13 @@ Docker Desktop is an easy-to-install application for your Mac, Windows or Linux 
 
 #### Docker registries
 
-A Docker registry stores Docker images. Docker Hub is a public registry that anyone can use, and Docker is configured to look for images on Docker Hub by default. You can even run your own private registry.
+A Docker registry stores Docker images. `Docker Hub` is a public registry that anyone can use, and Docker is configured to look for images on Docker Hub by default. You can even run your own private registry.
 
 When you use the docker pull or docker run commands, the required images are pulled from your configured registry. When you use the docker push command, your image is pushed to your configured registry.
 Docker objects
 
-When you use Docker, you are creating and using images, containers, networks, volumes, plugins, and other objects. This section is a brief overview of some of those objects.
+When you use Docker, you are creating and using images, containers, networks, volumes, plugins, and other objects. This section is a brief overview of some of those objects.  
+[dockerhub is used to staore images AND github is used to store the source code]  
 
 
 #### Dockerfile
@@ -259,7 +260,8 @@ git clone https://github.com/iam-veeramalla/Docker-Zero-to-Hero
 cd  examples
 ```
 
-### Login to Docker [Create an account with https://hub.docker.com/]
+### Login to Docker [Create an account with https://hub.docker.com/]    
+[can be used after docker run]  
 
 ```
 docker login
