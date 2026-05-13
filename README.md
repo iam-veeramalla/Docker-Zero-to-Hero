@@ -105,7 +105,7 @@ In simple words, you can understand as `containerization is a concept or technol
 
 ![image](https://user-images.githubusercontent.com/43399466/217507877-212d3a60-143a-4a1d-ab79-4bb615cb4622.png)
 
-The above picture, clearly indicates that Docker Deamon is brain of Docker. If Docker Deamon is killed, stops working for some reasons, Docker is brain dead :p (sarcasm intended).
+The above picture, clearly indicates that Docker Daemon is brain of Docker. If Docker Daemon is killed, stops working for some reasons, Docker is brain dead :p (sarcasm intended).
 
 ### Docker LifeCycle 
 
@@ -198,7 +198,7 @@ See 'docker run --help'.
 ```
 
 This can mean two things, 
-1. Docker deamon is not running.
+1. Docker daemon is not running.
 2. Your user does not have access to run docker commands.
 
 
