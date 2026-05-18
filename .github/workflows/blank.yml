@@ -23,4 +23,10 @@ jobs:
 
       - name: Pull Vercel env information
         run: vercel pull --yes --environment=dev --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy to vercel
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
           
