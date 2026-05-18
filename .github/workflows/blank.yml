@@ -1,6 +1,8 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Vercel deployment
+env:
+  
 
 # Controls when the workflow will run
 on:
