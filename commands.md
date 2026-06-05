@@ -53,6 +53,27 @@ Uploads an image to the configured registry.
 
 Run a command in a running container.
 
+### docker inspect <container_name/container_id>
+
+To inspect the conatiner
+
 ### docker network
 
 Manage Docker networks such as creating and removing networks, and connecting containers to networks.
+
+### docker volume ls
+
+It displays all running volumes
+
+### docker volume create <volume-name>
+
+It is used to create a volume
+
+### docker volume inspect <volume-name>
+
+It is used to inspect the given volume i.e inspecting whether it is local or remote volume / where it is created
+
+### docker volume rm <volume-name1> <volume-name2>
+
+Deletes the given volumes
+
