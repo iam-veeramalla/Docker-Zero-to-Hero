@@ -14,7 +14,7 @@ COPY requirements.txt /app/
 # Install dependencies into a local target folder so we can copy
 # just the installed packages into the final stage (not pip/apt/build tools)
 
-RUN pip install --no-cache-dir --target=/app/dependencies -r requirements.txt
+RUN pip install --no-cache-dir --target=/opt/dependencies -r requirements.txt
 
 # copy the actual source code 
 
@@ -34,6 +34,11 @@ COPY --from=build /opt/dependencies /usr/local/lib/python3.12/site-packages
 # Copy application source code 
 RUN addgroup --system app && adduser --system --ingroup app app
 COPY --from=build --chown=app:app /app /app
+
+# Ensure the app user can write to /app (needed for SQLite db file)
+RUN chown -R app:app /app
+
+
 USER app
 
 ENTRYPOINT ["python3"]
