@@ -28,12 +28,13 @@ WORKDIR /app
 
 # Copy installed python dependenices from the build stage 
 
-COPY --from=build /app/dependencies /usr/local/lib/python3.12/site-packages
+COPY --from=build /opt/dependencies /usr/local/lib/python3.12/site-packages
 
 
 # Copy application source code 
+RUN addgroup --system app && adduser --system --ingroup app app
+COPY --from=build --chown=app:app /app /app
+USER app
 
-COPY --from=build /app /app
-	
 ENTRYPOINT ["python3"]
 CMD ["manage.py", "runserver", "0.0.0.0:8000"]
