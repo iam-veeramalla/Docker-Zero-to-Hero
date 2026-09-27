@@ -19,51 +19,41 @@ xxxxxxxxxxxx        bridge              bridge
 
 ### Bridge Networking
 
-The default network mode in Docker. It creates a private network between the host and containers, allowing
-containers to communicate with each other and with the host system.
+The bridge driver connects containers on a single Docker host. Docker creates a default bridge network automatically, and you can create
+user-defined bridge networks when you need separate application networks.
 
 ![image](https://user-images.githubusercontent.com/43399466/217745543-f40e5614-ac34-4b78-85a9-91b24512388d.png)
 
-If you want to secure your containers and isolate them from the default bridge network you can also create your own bridge network.
+Containers on the same user-defined bridge can communicate with each other and resolve each other by container name. Different bridge
+networks are isolated from one another by default, but containers may still reach ports published by containers on other networks.
+Containers on different bridges can communicate directly when connected to a shared network. To create a user-defined bridge:
 
 ```
 docker network create -d bridge my_bridge
 ```
 
-Now, if you list the docker networks, you will see a new network.
+Start a web server on that network:
 
 ```
-docker network ls
-
-NETWORK ID          NAME                DRIVER
-xxxxxxxxxxxx        bridge              bridge
-xxxxxxxxxxxx        my_bridge           bridge
-xxxxxxxxxxxx        none                null
-xxxxxxxxxxxx        host                host
+docker run -d --rm --name web --network my_bridge nginx:alpine
 ```
 
-This new network can be attached to the containers, when you run these containers.
+From another container on the same network, use the name `web` to reach it:
 
 ```
-docker run -d --net=my_bridge --name db training/postgres
+docker run --rm --network my_bridge alpine:latest wget -qO- http://web
 ```
 
-This way, you can run multiple containers on a single host platform where one container is attached to the default network and 
-the other is attached to the my_bridge network.
-
-These containers are completely isolated with their private networks and cannot talk to each other.
-
-![image](https://user-images.githubusercontent.com/43399466/217748680-8beefd0a-8181-4752-a098-a905ebed5d2a.png)
-
-
-However, you can at any point of time, attach the first container to my_bridge network and enable communication
+The command prints the web server's default page. Remove the web container and network when finished:
 
 ```
-docker network connect my_bridge web
+docker stop web
+docker network rm my_bridge
 ```
 
-![image](https://user-images.githubusercontent.com/43399466/217748726-7bb347d0-3736-4f89-bdff-31d240b15150.png)
-
+The default bridge network differs from a user-defined bridge: containers on the default bridge generally need IP addresses to
+communicate with one another, while user-defined bridges provide name-based DNS discovery. Publishing a container port with `-p`
+allows access through a host port; containers do not need published ports to communicate over the same bridge.
 
 ### Host Networking
 
@@ -88,4 +78,3 @@ This mode enables communication between containers across multiple Docker host m
 ### Macvlan Networking
 
 This mode allows a container to appear on the network as a physical host rather than as a container.
-
