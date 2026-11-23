@@ -360,3 +360,5 @@ latest: digest: sha256:6e49841ad9e720a7baedcd41f9b666fcd7b583151d0763fe78101bb82
 ```
 
 ### You must be feeling like a champ already 
+
+Devops New 24 Nov 2026
